@@ -1,0 +1,41 @@
+<div *ngIf="displayDiv=='true' else elsePart" class="addnoteinputbox">
+    <div class="addnoteinputboxtext">
+        <input (click)="showCard()" class="addnoteinputboxtextinput" type="text" placeholder="Take a note..."
+            style="border:none; border-color: white; background-color: white; height:100%;width:100%;" />
+    </div>
+    <div class="addnoteinputboxicons">
+        <mat-icon svgIcon="tick-icon" aria-hidden="false" aria-label="tick icon" style="cursor: pointer;"></mat-icon>
+        <mat-icon svgIcon="brush-icon" aria-hidden="false" aria-label="brush icon" style="cursor: pointer;"></mat-icon>
+        <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="img icon" style="cursor: pointer;"></mat-icon>
+    </div>
+</div>
+
+
+
+<ng-template #elsePart>
+    <div class="addnoteinputboxdetails">
+        <div class="notecard">
+            <div class="notecard-content-icon">
+                <div class="notecard-content">
+                    <span><input class="notecard-content-input" type="text" placeholder="Title"></span>
+                    <span>
+                        <input class="notecard-content-input" type="text" placeholder="Take a note...">
+                    </span>
+                </div>
+                <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin icon"></mat-icon>
+            </div>
+
+            <div class="notecard-icons">
+                <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="reminder icon"></mat-icon>
+                <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="collabrator icon"></mat-icon>
+                <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="color palatte icon"></mat-icon>
+                <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="img icon"></mat-icon>
+                <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon"></mat-icon>
+                <mat-icon svgIcon="undo-icon" aria-hidden="false" aria-label="undo icon"></mat-icon>
+                <mat-icon svgIcon="redo-icon" aria-hidden="false" aria-label="redo icon"></mat-icon>
+                <button (click)="closeCard()" type="submit"
+                    style="border: none; background-color: white;">Close</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

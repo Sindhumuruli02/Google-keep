@@ -1,0 +1,44 @@
+<div>
+    <form class="login-container" [formGroup]="loginForm">
+        <h2 style="color:rgb(230, 230, 37);"><b>Fundo</b></h2>
+        <h3><b>Sign In</b></h3>
+        <p>Use your Fundo Account</p>
+        <mat-form-field appearance="outline" style="width:100%">
+            <mat-label>Email or Phone</mat-label>
+            <input matInput placeholder="Email or Phone*" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width:100%">
+            <mat-label>password</mat-label>
+            <input matInput placeholder="password*" formControlName="password">
+            <mat-error *ngIf="loginControl['password']?.hasError('required')">Password required</mat-error>
+            <mat-error *ngIf="loginControl['password']?.hasError('minlength')">minimum length is 8</mat-error>
+        </mat-form-field>
+        <button class="login-normal-button">Forgot password</button>
+        <div class="login-createaccount-login">
+            <button class="login-normal-button1" (click)="redirectToRegister()">Create account</button>
+            <button mat-flat-button color="primary" (click)="handleLogin()">Login</button>
+
+        </div>
+    </form>
+    <div class="footer-links">
+        <div class="footer-links1">
+            <select id="language-select" title="English (United States)">
+                <option value="en-US">English (United States)</option>
+                <option value="en-GB">English (United Kingdom)</option>
+                <option value="es-ES">Spanish (Spain)</option>
+                <option value="fr-FR">French (France)</option>
+                <option value="de-DE">German (Germany)</option>
+                <option value="zh-CN">Chinese (Simplified)</option>
+                <option value="ja-JP">Japanese</option>
+                <option value="hi-IN">Hindi (India)</option>
+            </select>
+        </div>
+        <div class="footer-links2">
+            <button class="login-normal-button2">Help</button>
+            <button class="login-normal-button2">Privacy</button>
+            <button class="login-normal-button2">terms</button>
+        </div>
+
+    </div>
+</div>

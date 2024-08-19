@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    width: 160%;
+    height: 100%;
+    // border: 1px solid ghostwhite;
+    // border-radius: 10px;
+
+}
+
+.navbar-contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 30px;
+    height: 43px;
+    margin-top: 12px;
+    align-items: center;
+    padding-left: 20px;
+}
+.navbar-contents:hover {
+    cursor: pointer;
+    background-color: rgb(215, 194, 131);
+    border-radius: 0px 20px 20px 0px;
+}
