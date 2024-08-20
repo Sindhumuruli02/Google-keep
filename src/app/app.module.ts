@@ -21,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddnoteComponent } from './addnote/addnote.component';
 import { MatCardModule } from '@angular/material/card';
+import { TypesComponent } from './types/types.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatCardModule } from '@angular/material/card';
     HeaderComponent,
     NavbarComponent,
     AddnoteComponent,
+    TypesComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { NotesContainerComponent } from './notes-container/notes-container.compo
 import { ArchieveContainerComponent } from './archieve-container/archieve-container.component';
 import { TrashContainerComponent } from './trash-container/trash-container.component';
 
-const routes: Routes = [
+const routes: Routes = [ 
   {
     path: '',
     component: LoginComponent,
