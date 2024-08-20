@@ -1,4 +1,6 @@
+import { NotesService } from './../services/notes-service/notes.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import {
   IMG_ICON,
   BRUSH_ICON,
@@ -9,13 +11,21 @@ import {
 } from '../../assets/svg.icons';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { add } from 'winston';
+import { log } from 'console';
 @Component({
   selector: 'app-addnote',
   templateUrl: './addnote.component.html',
   styleUrls: ['./addnote.component.scss'],
 })
 export class AddnoteComponent implements OnInit {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  notesform!: FormGroup;
+  constructor(
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+    private fb: FormBuilder,
+    private notesService: NotesService
+  ) {
     iconRegistry.addSvgIconLiteral(
       'img-icon',
       sanitizer.bypassSecurityTrustHtml(IMG_ICON)
@@ -42,7 +52,12 @@ export class AddnoteComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.notesform = this.fb.group({
+      Title: [''],
+      description: [''],
+    });
+  }
 
   displayDiv: any = 'true';
 
@@ -51,5 +66,20 @@ export class AddnoteComponent implements OnInit {
   }
   closeCard() {
     this.displayDiv = 'true';
-  }
+    console.log(this.notesform.value);
+    let formData = {
+      title: this.notesform.value?.Title,
+      description: this.notesform.value?.description,
+    };
+    this.notesService.addNotesApiCall('/notes/addNotes', formData).subscribe({
+      next: (res) => {
+        console.log(res);
+        window.location.reload();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+}
+
 }

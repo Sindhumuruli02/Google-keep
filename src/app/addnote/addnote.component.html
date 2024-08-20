@@ -13,13 +13,13 @@
 
 
 <ng-template #elsePart>
-    <div class="addnoteinputboxdetails">
+    <div class="addnoteinputboxdetails" [formGroup] = "notesform">
         <div class="notecard">
-            <div class="notecard-content-icon">
+            <div class="notecard-content-icon" >
                 <div class="notecard-content">
-                    <span><input class="notecard-content-input" type="text" placeholder="Title"></span>
+                    <span><input class="notecard-content-input" type="text" placeholder="Title" formControlName="Title"></span>
                     <span>
-                        <input class="notecard-content-input" type="text" placeholder="Take a note...">
+                        <input class="notecard-content-input" type="text" placeholder="Take a note..." formControlName="description">
                     </span>
                 </div>
                 <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin icon"></mat-icon>
