@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user-service/user-service.service';
+import { UserService } from '../services/user-service/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   redirectToLogin() {
-    this.route.navigate(['./login']);
+    this.route.navigate(['']);
   }
   get registerControl() {
     return this.registerForm.controls;
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     };
     console.log(registerObj);
     this.userService.registerApiCall(registerObj).subscribe({
-      next: (res: any) => {
+      next: (res) => {
         console.log('response', res);
       },
       error: (err) => {

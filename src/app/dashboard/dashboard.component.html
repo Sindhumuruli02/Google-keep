@@ -1,9 +1,11 @@
 <div style="width: 100%; height: 100%; display: flex; flex-direction: column">
-    <app-header style="width: 100%; height:25%;"></app-header>
+    <app-header style="width: 100%; height:25%; position: fixed; top: 0; z-index: 50;"></app-header>
     <!-- <main style="display: flex; justify-content: space-between;"> -->
         <div style="width: 100%; display: flex;">
-            <app-navbar style="width: 20%;"></app-navbar>
-            <div style="width: 80%;">
+            <div>
+                <app-navbar style="width: 20%; height: 100%; position: fixed; top: 100px;"></app-navbar>
+            </div>
+            <div style="width: 80%; position: relative; left: 12%; top: 100px;">
                 <router-outlet></router-outlet>
             </div>
         </div>

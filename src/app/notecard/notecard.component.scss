@@ -4,13 +4,14 @@
     background-color: rgb(236, 236, 236);
     margin-left: 2%;
     align-items: left;
-    height: 100px;
+    height: auto;
     width: 250px;
     margin-bottom: 30px;
     padding: 8%;
     // width:100%;
     // border:1px solid gray;
     border-radius: 1rem;
+    box-shadow: 5px 5px 5px rgb(81, 81, 82);
 }
 
 .notecard-content {

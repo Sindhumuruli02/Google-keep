@@ -1,6 +1,5 @@
-
-<div class="navbar">getall
-    <div class="navbar-contents">
+<div class="navbar">
+    <div class="navbar-contents" [routerLink]="['/dashboard/notes']">
         <mat-icon svgIcon="note-icon" aria-hidden="false" aria-label="note icon"></mat-icon>
         <span>Note</span>
     </div>
@@ -16,11 +15,11 @@
         <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="edit icon"></mat-icon>
         <span>Edit label</span>
     </div>
-    <div class="navbar-contents" routerLink="">
+    <div class="navbar-contents" [routerLink]="['/dashboard/archieve']">
         <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon"></mat-icon>
         <span>Archive</span>
     </div>
-    <div class="navbar-contents">
+    <div class="navbar-contents" [routerLink]="['/dashboard/trash']">
         <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon"></mat-icon>
         <span>Trash</span>
     </div>

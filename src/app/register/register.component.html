@@ -1,4 +1,3 @@
-
 <div class="register">
     <form class="register-container" [formGroup]="registerForm">
         <div class="register-container-main">
@@ -39,7 +38,7 @@
                 </mat-form-field>
             </div>
             <div class="register-container-main-button">
-                <button class="register-container-main-sign-in-instead" (click)="redirectToLogin()">
+                <button class="register-container-main-sign-in-instead" (click)="redirectToLogin()" style="cursor: pointer;">
                     <b>Sign in instead</b>
                 </button>
                 <button mat-flat-button color="primary" (click)="handleRegister()">Register</button>
