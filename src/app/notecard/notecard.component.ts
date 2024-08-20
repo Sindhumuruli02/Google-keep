@@ -69,4 +69,10 @@ export class NotecardComponent implements OnInit {
   handleDelete() {
     // this.sendDataToParent.emit("data from child deleted");
   }
+
+  remainder(){
+    console.log("Remainder");
+    
+    
+  } 
 }
