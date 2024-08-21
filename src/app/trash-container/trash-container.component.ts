@@ -17,7 +17,7 @@ export class TrashContainerComponent implements OnInit {
         this.notesList = r.data.data;
         console.log('result is: ', this.notesList);
       },
-      error: (e) => {},
+      error: () => {},
     });
   }
 }

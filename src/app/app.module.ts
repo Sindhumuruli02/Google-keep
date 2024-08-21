@@ -9,11 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './register/register.component';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-  FormControlName,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotecardComponent } from './notecard/notecard.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,7 +21,7 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddnoteComponent } from './addnote/addnote.component';
 import { MatCardModule } from '@angular/material/card';
-import { SearchPipe } from './pipes/search.pipe';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +36,6 @@ import { SearchPipe } from './pipes/search.pipe';
     HeaderComponent,
     NavbarComponent,
     AddnoteComponent,
-    SearchPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { NotesService } from './../services/notes-service/notes.service';
+import { NotesService } from '../services/notes-service/notes-service.service';
 import { Component, OnInit } from '@angular/core';
 import {
   REFRESH_ICON,
