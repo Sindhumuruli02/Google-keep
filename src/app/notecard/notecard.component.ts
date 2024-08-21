@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NotesService } from '../services/notes-service/notes.service';
+import { NoteObj, IconsPayloadData } from '../types/types';
 import {
   REMINDER_ICON,
   COLLABRATOR_ICON,
@@ -13,7 +15,7 @@ import {
 } from '../../assets/svg.icons';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { EventEmitter } from 'stream';
+
 @Component({
   selector: 'app-notecard',
   templateUrl: './notecard.component.html',
@@ -21,8 +23,14 @@ import { EventEmitter } from 'stream';
 })
 export class NotecardComponent implements OnInit {
   @Input() noteDetails: any;
+  @Output() updateList = new EventEmitter<{action : string , data : NoteObj}>();
+  @Input() container: string = 'notes';
   //  @Output() sendDataToParent=new EventEmitter();
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+    private notesService: NotesService
+  ) {
     iconRegistry.addSvgIconLiteral(
       'reminder-icon',
       sanitizer.bypassSecurityTrustHtml(REMINDER_ICON)
@@ -66,7 +74,34 @@ export class NotecardComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  handleDelete() {
-    
+  handleIconsClick(action: string) {
+    console.log(action);
+    // const endpoint:string=action=='archive'?'/archiveNotes''/trashNotes':'/changeColorNotes'
+    const endpoint: string =
+      action == 'archive'
+        ? '/archiveNotes'
+        : action == 'trash'
+        ? '/trashNotes'
+        : '/changesColorNotes';
+    const payloadData: IconsPayloadData = {
+      noteIdList: [this.noteDetails.id || ''],
+    };
+    if (action == 'archive') {
+      payloadData.isArchived = true;
+    } else if (action == 'trash') {
+      payloadData.isDeleted = true;
+    } else {
+      payloadData.color = action;
+    }
+    console.log('payloadData is: ', payloadData);
+    this.notesService.noteIconsApiCall(payloadData, endpoint).subscribe({
+      next: (res) => {
+        this.updateList.emit({ action: action, data: this.noteDetails });
+        console.log('response is: ', res);
+      },
+      error: (err) => {
+        console.log('error is: ', err);
+      },
+    });
   }
 }
