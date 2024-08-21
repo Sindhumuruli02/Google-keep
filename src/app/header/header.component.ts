@@ -1,4 +1,4 @@
-import { NotesService } from '../services/notes-service/notes-service.service';
+import { NotesService } from './../services/notes-service/notes.service';
 import { Component, OnInit } from '@angular/core';
 import {
   REFRESH_ICON,
@@ -10,11 +10,12 @@ import {
   OTHER_MENU_ICON,
   SEARCH_ICON,
   MORE_ICON,
-  MENU_ICON1
+  MENU_ICON1,
+  PROFILE
 } from '../../assets/svg.icons';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { error } from 'console';
+import { error, log } from 'console';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -39,6 +40,10 @@ export class HeaderComponent implements OnInit {
     iconRegistry.addSvgIconLiteral(
       'menu-icon',
       sanitizer.bypassSecurityTrustHtml(MENU_ICON)
+    );
+    iconRegistry.addSvgIconLiteral(
+      'profile-icon',
+      sanitizer.bypassSecurityTrustHtml(PROFILE)
     );
     iconRegistry.addSvgIconLiteral(
       'img-icon',
@@ -82,5 +87,10 @@ export class HeaderComponent implements OnInit {
         console.log('error', error);
       }
     })
+  }
+
+  logOut() {
+    localStorage.removeItem('access_token');
+    window.location.href = ' ';
   }
 }
