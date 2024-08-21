@@ -14,4 +14,6 @@ export class HttpService {
     console.log(this.BASE_URL, endpoint);
     return this.http.get(this.BASE_URL + endpoint);
   }
+
+  
 }

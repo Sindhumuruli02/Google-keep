@@ -48,6 +48,7 @@ export class RegisterComponent implements OnInit {
     this.userService.registerApiCall(registerObj).subscribe({
       next: (res) => {
         console.log('response', res);
+        this.route.navigate(['']);
       },
       error: (err) => {
         console.log('response', err);

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NotesService } from '../services/notes-service/notes.service';
-import { NoteObj, IconsPayloadData } from '../types/types';
+import { NotesService } from '../services/notes-service/notes-service.service';
+import { NoteObj,IconsPayloadData } from '../types/types.component';
 import {
   REMINDER_ICON,
   COLLABRATOR_ICON,
@@ -25,7 +25,6 @@ export class NotecardComponent implements OnInit {
   @Input() noteDetails: any;
   @Output() updateList = new EventEmitter<{action : string , data : NoteObj}>();
   @Input() container: string = 'notes';
-  //  @Output() sendDataToParent=new EventEmitter();
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
@@ -76,7 +75,6 @@ export class NotecardComponent implements OnInit {
 
   handleIconsClick(action: string) {
     console.log(action);
-    // const endpoint:string=action=='archive'?'/archiveNotes''/trashNotes':'/changeColorNotes'
     const endpoint: string =
       action == 'archive'
         ? '/archiveNotes'
@@ -95,11 +93,11 @@ export class NotecardComponent implements OnInit {
     }
     console.log('payloadData is: ', payloadData);
     this.notesService.noteIconsApiCall(payloadData, endpoint).subscribe({
-      next: (res) => {
+      next: (res:any) => {
         this.updateList.emit({ action: action, data: this.noteDetails });
         console.log('response is: ', res);
       },
-      error: (err) => {
+      error: (err:any) => {
         console.log('error is: ', err);
       },
     });

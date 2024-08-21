@@ -72,11 +72,11 @@ export class AddnoteComponent implements OnInit {
       description: this.notesform.value?.description,
     };
     this.notesService.addNotesApiCall('/notes/addNotes', formData).subscribe({
-      next: (res) => {
+      next: (res:any) => {
         console.log(res);
         window.location.reload();
       },
-      error: (error) => {
+      error: (error:any) => {
         console.log(error);
       },
     });

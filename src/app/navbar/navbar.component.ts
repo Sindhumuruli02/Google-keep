@@ -12,6 +12,7 @@ import {
   EDIT_ICON,
   TRASH_ICON,
   NOTE_ICON,
+  
 } from '../../assets/svg.icons';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';

@@ -1,5 +1,6 @@
 import { NotesService } from './../services/notes-service/notes.service';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data/data.service';
 import {
   REFRESH_ICON,
   SETTING_ICON,
@@ -15,7 +16,7 @@ import {
 } from '../../assets/svg.icons';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { error, log } from 'console';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -27,7 +28,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    private notesService: NotesService
+    private dataService: DataService,
   ) {
     iconRegistry.addSvgIconLiteral(
       'refresh-icon',
@@ -78,15 +79,8 @@ export class HeaderComponent implements OnInit {
   onSearch() {
     console.log(this.searchText);
 
-    this.notesService.getAllNotesApiCall('getNotesList').subscribe({
-      next: (response:any) => {
-        this.itemList = response;
+      this.dataService.updateData(this.searchText);
 
-      },
-      error: (error:Error) => {
-        console.log('error', error);
-      }
-    })
   }
 
   logOut() {
